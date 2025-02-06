@@ -29,7 +29,7 @@ export default function Sobre() {
   }, []);
 
   return (
-    <div className="mx-auto q-full h-screen max-h-screen max-w-4xl">
+    <div className="mx-auto q-full min-h-screen max-h-auto max-w-4xl">
       <h1 className="text-4xl font-bold text-center mt-8">Sobre</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
