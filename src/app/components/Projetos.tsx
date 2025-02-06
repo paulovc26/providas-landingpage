@@ -4,7 +4,7 @@ export default function Projetos() {
 
 
   return (
-    <div className="container mx-auto max-w-4xl min-h-screen max-h-auto">
+    <div className="container mx-auto max-w-4xl min-h-screen max-h-auto p-10">
       <h1 className="text-4xl font-bold text-center mt-8">Projetos</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mx-auto">

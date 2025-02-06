@@ -1,3 +1,4 @@
+import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
@@ -10,6 +11,7 @@ export default function page() {
       <Nav />
       <Home />
       <Sobre />
+      <Contato />
       <Projetos />
       <Footer />
     </>
