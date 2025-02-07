@@ -13,7 +13,7 @@ export default function page() {
       <Sobre />
       <Contato />
       <Projetos />
-      <Footer />
+      <Footer />'
     </>
   );
 }

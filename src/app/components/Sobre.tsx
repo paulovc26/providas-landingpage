@@ -42,7 +42,7 @@ export default function Sobre() {
             <button className="btn btn-primary">Saiba mais</button>
           </div>
         </div>
-        <div className="grid cols-1 md:grid-cols-1 md:grid-col-2 gap-4">
+        <div className="grid cols-1 md:grid-cols-1 md:grid-col-2 gap-4 lg:col-start-3">
           <div className="carousel rounded-box w-80 md:w-128 mx-auto md:mx-0">
             <div className={`carousel-item w-full transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
               <img
