@@ -1,8 +1,4 @@
 export default function Projetos() {
-
-    
-
-
   return (
     <div className="container mx-auto max-w-4xl min-h-screen max-h-auto p-10">
       <h1 className="text-4xl font-bold text-center mt-8">Projetos</h1>
@@ -60,7 +56,7 @@ export default function Projetos() {
           <div className="p-5">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
+                Noteworthy technology acquisitions 2025
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-700">
