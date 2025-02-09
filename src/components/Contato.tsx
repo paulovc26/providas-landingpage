@@ -15,7 +15,7 @@ export default function Contato() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <Link href="/formulario" target="_blank">
+          <Link href="/cadastro" target="_blank">
           <button className="btn btn-primary">Preencher formulário</button>
           </Link>
         </div>
