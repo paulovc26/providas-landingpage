@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-
+import "../globals.css";
+import Nav from "../components/Nav";
 
 export const metadata: Metadata = {
   title: "Instituto Pro Vidas",
@@ -14,9 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html data-theme="corporate" lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body className={`antialiased`}>
+        <Nav />
         {children}
       </body>
     </html>

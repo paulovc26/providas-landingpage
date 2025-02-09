@@ -2,6 +2,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Stepper from 'bs-stepper';
 import 'bs-stepper/dist/css/bs-stepper.min.css';
+import { z } from 'zod';
+
+const emailSchema = z.string().email({ message: "Por favor, insira um email válido." });
+const formSchema = z.object({
+  email: z.string().email({ message: "Por favor, insira um email válido." }),
+  name: z.string().min(1, { message: "Nome é obrigatório." }),
+  age: z.number().min(1, { message: "Idade deve ser um número positivo." }),
+  address: z.string().min(1, { message: "Endereço é obrigatório." })
+});
 
 export default function Page() {
   const [isValid, setIsValid] = useState(true);
@@ -11,6 +20,7 @@ export default function Page() {
     age: '',
     address: ''
   });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const stepperRef = useRef<Stepper | null>(null);
 
@@ -28,29 +38,42 @@ export default function Page() {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value
+      [id]: id === 'age' ? Number(value) : value
     }));
     setIsValid(true); // Reset validity on change
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const emailInput = document.getElementById('email') as HTMLInputElement;
-    if (!emailInput.checkValidity()) {
-      setIsValid(false);
-      emailInput.reportValidity();
-    } else {
+    try {
+      emailSchema.parse(formData.email);
       setIsValid(true);
       stepperRef.current?.next();
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors({ email: error.errors[0].message });
+        setIsValid(false);
+      }
     }
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
-      ...formData
-    });
-    alert('Formulário enviado com sucesso!');
+    try {
+      formSchema.parse(formData);
+      console.log(formData);
+      alert('Formulário enviado com sucesso!');
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: { [key: string]: string } = {};
+        error.errors.forEach((err) => {
+          if (err.path.length > 0) {
+            newErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+    }
   };
 
   return (
@@ -92,9 +115,9 @@ export default function Page() {
                 >
                   Próximo
                 </button>
-                {!isValid && (
+                {!isValid && errors.email && (
                   <p className="text-red-500 mt-2">
-                    Por favor, insira um email válido.
+                    {errors.email}
                   </p>
                 )}
               </div>
@@ -118,6 +141,11 @@ export default function Page() {
                   placeholder="Digite seu nome"
                   required
                 />
+                {errors.name && (
+                  <p className="text-red-500 mt-2">
+                    {errors.name}
+                  </p>
+                )}
               </div>
               <div className="mb-4">
                 <label
@@ -135,6 +163,11 @@ export default function Page() {
                   placeholder="Digite sua idade"
                   required
                 />
+                {errors.age && (
+                  <p className="text-red-500 mt-2">
+                    {errors.age}
+                  </p>
+                )}
               </div>
               <div className="mb-4">
                 <label
@@ -152,6 +185,11 @@ export default function Page() {
                   placeholder="Digite seu endereço"
                   required
                 />
+                {errors.address && (
+                  <p className="text-red-500 mt-2">
+                    {errors.address}
+                  </p>
+                )}
               </div>
               <button
                 type="submit"
