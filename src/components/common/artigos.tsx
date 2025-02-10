@@ -1,4 +1,4 @@
-import { dataAtual } from "@/services/date-service";
+import { dataAtual } from "@/services/useDate";
 
 const pegaDataAtual = dataAtual();
 

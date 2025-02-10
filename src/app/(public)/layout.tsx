@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import Nav from "../../components/Nav";
+import Nav from "../../components/common/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -17,10 +17,9 @@ export default function RootLayout({
     <html data-theme="corporate" lang="en">
       <body className={`antialiased`}>
         <Nav />
-        {children}
-      <Footer />
+        <main>{children}</main>
+        <Footer />
       </body>
-
     </html>
   );
 }

@@ -38,7 +38,7 @@ export default function Sobre() {
             <h1 className='text-2xl font-extrabold place-items-center'>Sobre o Insituto</h1>
             <p className='text-lg'>O Instituto Pro Vidas é uma organização sem fins lucrativos que tem como objetivo principal a promoção da saúde e do bem-estar da população mais carente.</p>
           </div>
-          <div className='gap-4 rounded-box p-4'>
+          <div className='gap-4 rounded-box p-4 flex justify-center items-center'>
             <button className="btn btn-primary">Saiba mais</button>
           </div>
         </div>

@@ -1,13 +1,15 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import NavLink from "./NavLink";
 
 export default function Nav() {
   const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) { // Quando rolar mais de 100px
+      if (window.scrollY > 100) {
+        // Quando rolar mais de 100px
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -20,7 +22,7 @@ export default function Nav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <div>
       <nav className="flex justify-between items-center bg-sky-600 text-white text-xs sm:text-md p-2 px-10 relative top-0">
@@ -33,14 +35,16 @@ export default function Nav() {
           <div className="ml-auto">Social here</div>
         </div>
       </nav>
-      <nav className={`flex justify-between items-center p-4 py-6 bg-sky-700 text-white ${isFixed ? 'fixed top-0 left-0 w-full z-50' : ''}`}>
-        <Link href="/" className="pl-12 text-xl font-bold">Instituto Pró-Vidas</Link>
+      <nav
+        className={`flex justify-between items-center p-4 py-6 bg-sky-700 text-white ${
+          isFixed ? "fixed top-0 left-0 w-full z-50" : ""
+        }`}
+      >
+        <Link href="/" className="pl-12 text-xl font-bold">
+          Instituto Pró-Vidas
+        </Link>
         <div className="flex mx-auto gap-4 font-bold text-xl">
-          <Link href="/" className="hover:text-base-300/30">Inicio</Link>
-          <Link href="/sobre" className="hover:text-base-300/30">Sobre</Link>
-          <Link href="/projetos" className="hover:text-base-300/30">Projetos</Link>
-          <Link href="/blog" className="hover:text-base-300/30">Blog</Link>
-          <Link href="/contato" className="hover:text-base-300/30">Contato</Link>
+          <NavLink />
         </div>
       </nav>
     </div>

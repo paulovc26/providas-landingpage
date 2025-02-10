@@ -1,25 +1,35 @@
+"use client";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const Mapa = dynamic(() => import("./common/Mapa"), { ssr: false });
 
 export default function Contato() {
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content max-w-4xl flex-col lg:flex-row-reverse">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 className="text-4xl font-bold">Cadastre-se em nosso banco de beneficios</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <Link href="/cadastro" target="_blank">
-          <button className="btn btn-primary">Preencher formulário</button>
+    <section className="bg-zinc-200">
+    <div className="grid grid-cols-1 mx-auto max-w-6xl sm:grid-cols-2 ">
+      <div className="container px-10 py-6">
+        <div className="border flex flex-col justify-center p-10 items-center font-bold border-black/20 bg-zinc-50 rounded-lg gap-4 h-auto">
+          <h1 className="pt-6 text-xl  text-sky-700">Endereço</h1>
+          <p>SHPS QD 205 CONJ A LOTE 2 POR DO SOL</p>
+          <p>Ceilândia, Brasília - DF</p>
+          <p>CEP: 72238-143</p>
+          <Link
+            href="https://maps.app.goo.gl/Ks4ZeP5bEWYtbvYN8"
+            target="_blank"
+          >
+            <button className="btn btn-primary text-white">Ver no maps</button>
           </Link>
+          <h1 className="pt-6 text-xl text-sky-700">Contato</h1>
+          <p>(61) 91234-5678</p>
+          <p>(61) 98765-5432</p>
+          <p>emailcontato@contato.com</p>
         </div>
       </div>
+        <div className="container px-10 py-6">
+          <Mapa />
+      </div>
     </div>
+    </section>
   );
 }
