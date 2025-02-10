@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type Funcionario = {
   id: number;
@@ -14,9 +14,9 @@ type Orçamento = {
 };
 
 const dadosFuncionarios: Funcionario[] = [
-  { id: 1, nome: 'João Silva', cargo: 'Analista', salario: 4500 },
-  { id: 2, nome: 'Maria Oliveira', cargo: 'Gerente', salario: 7000 },
-  { id: 3, nome: 'Carlos Souza', cargo: 'Desenvolvedor', salario: 5500 },
+  { id: 1, nome: "João Silva", cargo: "Educador", salario: 4500 },
+  { id: 2, nome: "Maria Oliveira", cargo: "Diretor", salario: 7000 },
+  { id: 3, nome: "Carlos Souza", cargo: "Coordenador", salario: 5500 },
 ];
 
 const dadosOrcamento: Orçamento[] = [
@@ -26,49 +26,80 @@ const dadosOrcamento: Orçamento[] = [
 
 export default function TabelaTransparencia() {
   return (
-    <div>
-      <h2>Transparência de Pagamentos de Funcionários</h2>
-      <table border={1} style={{ width: '100%', marginBottom: '20px' }}>
-        <thead>
+    <div className="p-8 space-y-8">
+      <h2 className="text-3xl font-semibold text-gray-800">
+        Transparência de Pagamentos de Funcionários
+      </h2>
+      <table className="min-w-full table-auto border-separate border-spacing-0.5">
+        <thead className="bg-gray-200">
           <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Cargo</th>
-            <th>Salário (R$)</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              ID
+            </th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Nome
+            </th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Cargo
+            </th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Salário (R$)
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white">
           {dadosFuncionarios.map((funcionario) => (
-            <tr key={funcionario.id}>
-              <td>{funcionario.id}</td>
-              <td>{funcionario.nome}</td>
-              <td>{funcionario.cargo}</td>
-              <td>{funcionario.salario.toFixed(2)}</td>
+            <tr key={funcionario.id} className="border-b border-gray-200">
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {funcionario.id}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {funcionario.nome}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {funcionario.cargo}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {funcionario.salario.toFixed(2)}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <h2>Transparência de Orçamento</h2>
-      <table border={1} style={{ width: '100%' }}>
-        <thead>
+      <h2 className="text-3xl font-semibold text-gray-800">
+        Transparência de Orçamento
+      </h2>
+      <table className="min-w-full table-auto border-separate border-spacing-0.5">
+        <thead className="bg-gray-200">
           <tr>
-            <th>Ano</th>
-            <th>Valor Previsto (R$)</th>
-            <th>Valor Executado (R$)</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Ano
+            </th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Valor Previsto (R$)
+            </th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Valor Executado (R$)
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white">
           {dadosOrcamento.map((orcamento) => (
-            <tr key={orcamento.ano}>
-              <td>{orcamento.ano}</td>
-              <td>{orcamento.valorPrevisto.toFixed(2)}</td>
-              <td>{orcamento.valorExecutado.toFixed(2)}</td>
+            <tr key={orcamento.ano} className="border-b border-gray-200">
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {orcamento.ano}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {orcamento.valorPrevisto.toFixed(2)}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {orcamento.valorExecutado.toFixed(2)}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-};
-
+}

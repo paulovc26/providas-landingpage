@@ -17,8 +17,8 @@ export default function NavLink() {
       <Link href="/sobre" className={linkClasses("/sobre")}>
         Sobre
       </Link>
-      <Link href="/projetos" className={linkClasses("/projetos")}>
-        Projetos
+      <Link href="/transparencia" className={linkClasses("/transparencia")}>
+        Transparência
       </Link>
       <Link href="/blog" className={linkClasses("/blog")}>
         Blog
